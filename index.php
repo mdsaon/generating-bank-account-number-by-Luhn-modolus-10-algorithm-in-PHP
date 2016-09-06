@@ -1,4 +1,11 @@
-
+<script type="text/javascript">
+function calculate()
+{
+var x1=document.getElementById("bankgroup");
+var z1=document.getElementById("number");
+z1.value=x1.value;
+}
+</script>
 <?php
 $name="";
 $bankgroup= "";
@@ -8,7 +15,7 @@ if(isset($_POST['submit']))
 	$name=$_POST['name'];
 	$bankgroup=$_POST['bankgroup'];
 
-	$number=$bankgroup.$_POST['number'];
+	$number=$_POST['number'];
 	
 	function checkDigit($number)
 	{
@@ -46,7 +53,7 @@ if(isset($_POST['submit']))
   <label><br>
   <br>
   Bank Group<br>
-  <select name="bankgroup" id="bankgroup">
+  <select name="bankgroup" id="bankgroup" onchange="calculate()">
     <option value="0">Select</option>
     <option value="1">Nordea Bank (Nordea)</option>
 	<option value="31">Handelsbanken (SHB)</option>
@@ -63,8 +70,8 @@ if(isset($_POST['submit']))
   </select>
   </label>  <label><br>
   <br>
-  <label>Enter a Number<br>
-  <input name="number" type="text" id="name">
+  <label>Please Enter upto 13-characters including the Bank Group numbers to generate the 14-characters based numbers<br>
+  <input name="number" type="text" id="number"> 
   </label>
   <label><br>
   <input name="submit" type="submit" id="submit" value="Generate">
